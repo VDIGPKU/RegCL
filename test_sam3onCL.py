@@ -1,11 +1,11 @@
 import os
+import json
 import copy
 import random
 import logging
 import argparse
 import numpy as np
 from importlib import import_module
-from pathlib import Path
 
 import torch
 from torchvision import transforms
@@ -14,10 +14,7 @@ from torch.utils.data import DataLoader
 import segmentation_models_pytorch as smp
 from segment_anything import sam_model_registry
 from datasets.dataset import SAM_dataset, RandomGenerator
-from datasets.config import load_dataset_config
 from augmodule_utils.utils import AverageMeter, mae, select
-
-ROOT = Path(__file__).parent
 
 def setup_logging(args) -> logging.Logger:
     """Set up the log file and format."""
@@ -118,7 +115,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--module', type=str, default='AugModule', choices=['AugModule', 'LoRA'], help='Module (Default=AugModule)')
     parser.add_argument('--vit_name', type=str, default='vit_b', help='select one vit model (Default=vit_b)')
-    parser.add_argument('--ckpt', type=str, default=str(ROOT / 'checkpoint' / 'sam_vit_b_01ec64.pth'), help='Pretrained checkpoint')
+    parser.add_argument('--ckpt', type=str, default='checkpoint/sam_vit_b_01ec64.pth', help='Pretrained checkpoint')
     parser.add_argument('--img_size', type=int, default=1024, help='input patch size of network input (Default=1024)')
     parser.add_argument('--seed', type=int, default=1234, help='random seed (Default=1024)')
     parser.add_argument('--order', type=str, default="Kvasir_camo_ISTD_ISIC_cod", help="Training order (Default=Kvasir_camo_ISTD_ISIC_cod)")
@@ -138,7 +135,8 @@ def main():
     args.rank = 0
     print('Not using distributed mode')
 
-    test_data = load_dataset_config(ROOT / 'datasets' / 'datasets_test.json', repo_root=ROOT)
+    with open('datasets/datasets_test.json', 'r', encoding='utf-8') as f:
+        test_data = json.load(f)
 
     keys = args.order.split("_")
     missing_keys = [key for key in keys if key not in test_data]

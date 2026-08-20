@@ -370,7 +370,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--ckpt",
         type=str,
-        default=os.path.join(ROOT_DIR, "checkpoint", "sam_vit_b_01ec64.pth"),
+        default="checkpoint/sam_vit_b_01ec64.pth",
         help="Pretrained checkpoint",
     )
     parser.add_argument("--img_size", type=int, default=1024, help="input patch size of network input (Default=1024)")

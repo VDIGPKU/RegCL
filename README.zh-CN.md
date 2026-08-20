@@ -54,7 +54,7 @@ data/Kvasir/
 
 `points.json` 保存每个 instance 的固定 point prompt，主文实验使用这些静态点。
 
-默认数据集配置文件为 `datasets/datasets_train.json` 和 `datasets/datasets_test.json`。当前配置默认使用 `data/` 下的仓库相对路径。你可以把处理好的数据集放在 `data/` 下，也可以直接把 JSON 文件中的路径改成自己的绝对路径。JSON 中的相对路径会从仓库根目录解析。
+默认数据集配置文件为 `datasets/datasets_train.json` 和 `datasets/datasets_test.json`。当前配置默认使用 `data/` 下的仓库相对路径。请从仓库根目录运行命令，保证这些相对路径可以正确解析；也可以直接把 JSON 文件中的路径改成自己的绝对路径。
 
 ### Checkpoint
 

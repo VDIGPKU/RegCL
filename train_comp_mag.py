@@ -3,7 +3,6 @@ import copy
 import logging
 import os
 from importlib import import_module
-from pathlib import Path
 
 import torch
 import torch.distributed as dist
@@ -13,9 +12,6 @@ from augmodule_utils.utils import configure_opt, select, train
 import train_regcl as train_regcl_lib
 from train_regcl import get_dataloader_SAM, load_dataset, setup_seed
 from merging.magmax_merging import validate_checkpoint
-
-
-ROOT = Path(__file__).parent
 
 
 def setup_distribution(args: argparse.Namespace) -> None:
@@ -195,7 +191,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--epoch", type=int, default=20, help="Epoch (Default=20)")
     parser.add_argument("--layers", type=str, default="7-11", help="LoRA layers (Default=7-11)")
     parser.add_argument("--vit_name", type=str, default="vit_b", help="select one vit model (Default=vit_b)")
-    parser.add_argument("--ckpt", type=str, default=str(ROOT / "checkpoint" / "sam_vit_b_01ec64.pth"), help="Pretrained checkpoint")
+    parser.add_argument("--ckpt", type=str, default="checkpoint/sam_vit_b_01ec64.pth", help="Pretrained checkpoint")
     parser.add_argument("--img_size", type=int, default=1024, help="input patch size of network input (Default=1024)")
     parser.add_argument("--seed", type=int, default=1234, help="random seed (Default=1234)")
     parser.add_argument("--order", type=str, default="Kvasir_camo_ISTD_ISIC_cod", help="Training order")

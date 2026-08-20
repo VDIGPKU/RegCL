@@ -4,12 +4,9 @@ import copy
 import argparse
 import logging
 from importlib import import_module
-from pathlib import Path
 from segment_anything import sam_model_registry
 from merging.inner_product import *
 from train_regcl import get_dataloader_SAM, setup_seed, setup_distribution, load_dataset
-
-ROOT = Path(__file__).resolve().parents[1]
 
 
 def setup_logger(log_file):
@@ -176,9 +173,9 @@ if __name__ == "__main__":
     parser.add_argument('--module', type=str,
                         default='AugModule', choices=['AugModule', 'LoRA'], help='Module (Default=AugModule)')
     parser.add_argument('--model_folder', type=str,
-                        default=str(ROOT / 'log' / 'AugModule_Kvasir_camo_ISTD_ISIC_cod__00'), help='Path to the models\' folder')
+                        default='log/AugModule_Kvasir_camo_ISTD_ISIC_cod__00', help='Path to the models\' folder')
     parser.add_argument('--ckpt', type=str,
-                        default=str(ROOT / 'checkpoint' / 'sam_vit_b_01ec64.pth'), help='Pretrained checkpoint')
+                        default='checkpoint/sam_vit_b_01ec64.pth', help='Pretrained checkpoint')
     parser.add_argument('--method', type = str,
                         default='RegMean', help='Fusion method mean/weighted/RegMean (Defalut=RegMean)')
     parser.add_argument('--seed', type=int,

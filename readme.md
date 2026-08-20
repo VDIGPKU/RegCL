@@ -52,7 +52,7 @@ Download each dataset from its official website and convert it to the format abo
 
 `points.json` stores the static point prompts for each instance, which are used in the main paper.
 
-The default dataset config files are `datasets/datasets_train.json` and `datasets/datasets_test.json`. They use repository-relative paths under `data/` by default. You can either place the processed datasets under `data/` or edit these JSON files to use your own absolute paths. Relative paths in these config files are resolved from the repository root.
+The default dataset config files are `datasets/datasets_train.json` and `datasets/datasets_test.json`. They use repository-relative paths under `data/` by default. Run commands from the repository root so these relative paths resolve correctly, or edit the JSON files to use your own absolute paths.
 
 ### Checkpoint
 Download the official ViT-B SAM checkpoint to `checkpoint/sam_vit_b_01ec64.pth`:

@@ -1,1 +1,1 @@
-"""Dataset helpers for RegCL."""
+"""Dataset package for RegCL."""

@@ -606,7 +606,7 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     parser.add_argument(
         "--ckpt",
         type=str,
-        default=os.path.join(REPO_ROOT, "checkpoint", "sam_vit_b_01ec64.pth"),
+        default="checkpoint/sam_vit_b_01ec64.pth",
         help="Pretrained SAM checkpoint",
     )
     parser.add_argument("--img_size", type=int, default=1024)

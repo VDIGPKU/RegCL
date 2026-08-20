@@ -1,4 +1,5 @@
 import os
+import json
 import copy
 import random
 import logging
@@ -16,16 +17,12 @@ from torch.utils.data import DataLoader
 import segmentation_models_pytorch as smp
 from segment_anything import sam_model_registry
 from datasets.dataset import SAM_dataset, RandomGenerator, PairedImageFolders
-from datasets.config import load_train_test_configs
 from augmodule_utils.utils import train, configure_opt, CustomDataset, MLP, train_embed, AverageMeter, mae, select
 
-from pathlib import Path
 from typing import Dict, Any, Tuple
 from merging.inner_product import *
 
 from datetime import datetime
-
-ROOT = Path(__file__).parent
 
 def setup_seed(seed: int = 1234) -> None:
     """Set random seeds for reproducible experiments."""
@@ -72,15 +69,20 @@ def setup_distribution(args: argparse.Namespace) -> None:
 
 def load_dataset(args: argparse.Namespace) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     """Load and initialize datasets."""
+    # Load dataset config files
     try:
-        train_data, test_data = load_train_test_configs(
-            ROOT / 'datasets',
-            order=args.order,
-            repo_root=ROOT,
-        )
+        with open('datasets/datasets_test.json', 'r', encoding='utf-8') as f:
+            test_data = json.load(f)
+        with open('datasets/datasets_train.json', 'r', encoding='utf-8') as f:
+            train_data = json.load(f)
     except Exception as e:
         logging.error(f"Failed to load dataset: {str(e)}")
         raise
+
+    # Reorder datasets according to the training order
+    keys = args.order.split("_")
+    train_data = {key: train_data[key] for key in keys}
+    test_data = {key: test_data[key] for key in keys}
 
     if args.rank == 0:
         logging.info(f'Dataset order: {list(train_data.keys())}')
@@ -376,7 +378,7 @@ if __name__ == '__main__':
     parser.add_argument('--vit_name', type=str,
                         default='vit_b', help='select one vit model (Default=vit_b)')
     parser.add_argument('--ckpt', type=str,
-                        default=str(ROOT / 'checkpoint' / 'sam_vit_b_01ec64.pth'), help='Pretrained checkpoint')
+                        default='checkpoint/sam_vit_b_01ec64.pth', help='Pretrained checkpoint')
     parser.add_argument('--img_size', type=int,
                         default=1024, help='input patch size of network input (Default=1024)')
     parser.add_argument('--seed', type=int,
