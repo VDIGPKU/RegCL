@@ -1,0 +1,7 @@
+{
+    "ISTD": "data/ISTD_Dataset/test",
+    "Kvasir": "data/Kvasir-SEG/test",
+    "ISIC": "data/ISIC/test",
+    "cod": "data/COD10K-v2/Test",
+    "camo": "data/CAMO/test"
+}

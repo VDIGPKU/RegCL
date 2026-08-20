@@ -1,0 +1,7 @@
+{
+    "ISTD": "data/ISTD_Dataset/train",
+    "Kvasir": "data/Kvasir-SEG/train",
+    "ISIC": "data/ISIC/train",
+    "cod": "data/COD10K-v2/train",
+    "camo": "data/CAMO/train"
+}
