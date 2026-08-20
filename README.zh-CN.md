@@ -97,3 +97,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --nnodes 1 --nproc_per_node 4 --master_por
 # 单卡训练
 python train_regcl.py --module AugModule --batch_size 8 --cuda 0
 ```
+
+## 致谢
+
+感谢 [INV-WZQ/SAMCL](https://github.com/INV-WZQ/SAMCL) 和 [bloomberg/dataless-model-merging](https://github.com/bloomberg/dataless-model-merging) 为本项目提供了有益基础。同时感谢 [facebookresearch/segment-anything](https://github.com/facebookresearch/segment-anything) 提供 Segment Anything Model 及其预训练 checkpoint 基础，也感谢 [tanganke/fusion_bench](https://github.com/tanganke/fusion_bench) 集中提供了 model merging methods 的轻量级实现。
