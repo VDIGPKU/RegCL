@@ -103,4 +103,9 @@ python train_regcl.py --module AugModule --batch_size 8 --cuda 0
 感谢 [INV-WZQ/SAMCL](https://github.com/INV-WZQ/SAMCL) 和 [bloomberg/dataless-model-merging](https://github.com/bloomberg/dataless-model-merging) 为本项目提供了有益基础。同时感谢 [facebookresearch/segment-anything](https://github.com/facebookresearch/segment-anything) 提供 Segment Anything Model 及其预训练 checkpoint 基础，也感谢 [tanganke/fusion_bench](https://github.com/tanganke/fusion_bench) 集中提供了 model merging methods 的轻量级实现。
 
 ## 许可证
-该项目仅供学术研究使用，如需用于商业目的，则需获得授权。如需商业授权，请联系wyt@pku.edu.cn。
+除非另有明确说明，本工具包代码根据知识共享署名-非商业性使用-相同方式共享 4.0 国际公共许可协议 (CC BY-NC-SA 4.0) 的条款提供给您。
+该协议包含此处列出的附加条款。
+当您从本网站或其他来源下载或使用代码时，
+即表示您同意遵守 CC BY-NC-SA 4.0 的条款。
+本工具包代码仅用于非商业用途，例如学术研究、教学或科学出版物。
+如需商务合作，请联系 wyt@pku.edu.cn。
