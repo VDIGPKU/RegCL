@@ -112,6 +112,7 @@ python train_regcl.py --module AugModule --batch_size 8 --cuda 0
       primaryClass={cs.LG},
       url={https://arxiv.org/abs/2507.12297}, 
 }
+```
 
 ## 致谢
 
