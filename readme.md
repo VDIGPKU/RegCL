@@ -99,6 +99,21 @@ python train_regcl.py --module AugModule --batch_size 8 --cuda 0
 
 We thank [INV-WZQ/SAMCL](https://github.com/INV-WZQ/SAMCL) and [bloomberg/dataless-model-merging](https://github.com/bloomberg/dataless-model-merging) for providing useful foundations for this project. We also thank [facebookresearch/segment-anything](https://github.com/facebookresearch/segment-anything) for providing the Segment Anything Model and its pretrained checkpoints, and [tanganke/fusion_bench](https://github.com/tanganke/fusion_bench) for collecting lightweight implementations of model merging methods.
 
+## Citations
+
+If you find this project useful, please cite:
+
+```bibtex
+@misc{shu2025regclcontinualadaptationsegment,
+      title={RegCL: Continual Adaptation of Segment Anything Model via Model Merging}, 
+      author={Yuan-Chen Shu and Zhiwei Lin and Yongtao Wang},
+      year={2025},
+      eprint={2507.12297},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2507.12297}, 
+}
+
 ## License
 Unless specifically labeled, otherwise this toolkit code are provided to You 
 under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License 
